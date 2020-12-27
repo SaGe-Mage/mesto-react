@@ -21,7 +21,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 			.catch((err) => console.log(`Что-то пошло не так: ${err}`))
 	});
 
-	return (
+	return(
 		<main className="content">
 			<section className="profile">
 				<div className="profile__wrapper">
@@ -48,7 +48,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 					<Card card={card} onCardClick={onCardClick}/>
 				))}
 			</section>
-		</main>);
+		</main>
+	);
 }
 
 export default Main;

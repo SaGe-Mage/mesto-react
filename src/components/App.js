@@ -36,7 +36,7 @@ function App() {
 		setSelectedCard({isOpen: false, link: "", name: ""});
 	}
 
-	return (
+	return(
 		<div className="page">
 			<Header/>
 
@@ -56,12 +56,10 @@ function App() {
 				isOpen={isEditAvatarPopupOpen}
 				onClose={closeAllPopups}
 			>
-				<>
 					<input type="url" name="avatar" className="popup__input popup__input_place_avatar"
 								 placeholder="Ссылка на аватар"
 								 id="avatar-input" required/>
 					<span className="popup__input-error" id="avatar-input-error"/>
-				</>
 			</PopupWithForm>
 
 			<PopupWithForm
@@ -70,7 +68,6 @@ function App() {
 				isOpen={isEditProfilePopupOpen}
 				onClose={closeAllPopups}
 			>
-				<>
 					<input type="text" name="name" className="popup__input popup__input_place_name" id="name-input"
 								 minLength="2"
 								 maxLength="40" required/>
@@ -79,7 +76,6 @@ function App() {
 								 minLength="2"
 								 maxLength="400" required/>
 					<span className="popup__input-error" id="about-input-error"/>
-				</>
 			</PopupWithForm>
 
 			<PopupWithForm
@@ -88,7 +84,6 @@ function App() {
 				isOpen={isAddPlacePopupOpen}
 				onClose={closeAllPopups}
 			>
-				<>
 					<input type="text" name="name" placeholder="Название" className="popup__input popup__input_place_location"
 								 id="location-input" minLength="2" maxLength="30" required/>
 					<span className="popup__input-error" id="location-input-error"/>
@@ -96,7 +91,6 @@ function App() {
 								 className="popup__input popup__input_place_link"
 								 id="link-input" required/>
 					<span className="popup__input-error" id="link-input-error"/>
-				</>
 			</PopupWithForm>
 
 			<ImagePopup card={selectedCard} onClose={closeAllPopups}/>

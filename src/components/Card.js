@@ -15,7 +15,7 @@ function Card({card, onCardClick}) {
 				</div>
 			</div>
 		</article>
-	)
+	);
 }
 
 export default Card;

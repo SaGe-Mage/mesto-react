@@ -1,7 +1,7 @@
 {
   "name": "mesto-react",
   "version": "0.1.0",
-  "private": true,
+  "description": "Интерактивная страница, На которой можно открыть всплывающее окно и изменить отображаемые данные.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -19,6 +19,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaGe-Mage/mesto-react.git"
+  },
+  "author": "Sergei Moskvitin",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -1,5 +1,5 @@
 function PopupWithForm({title, name, children, isOpen, onClose}) {
-	return (
+	return(
 		<section className={`popup popup_place_${name} ${isOpen ? "popup_is-opened" : ""}`}>
 			<div className="popup__container">
 				<button type="button" className={`popup__close-button popup__close-button_place_${name}`} onClick={onClose}/>
@@ -11,7 +11,7 @@ function PopupWithForm({title, name, children, isOpen, onClose}) {
 				</form>
 			</div>
 		</section>
-	)
+	);
 }
 
 export default PopupWithForm;
