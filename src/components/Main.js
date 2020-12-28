@@ -19,7 +19,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 				setCards(cards);
 			})
 			.catch((err) => console.log(`Что-то пошло не так: ${err}`))
-	});
+	}, []);
 
 	return(
 		<main className="content">
