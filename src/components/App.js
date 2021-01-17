@@ -94,14 +94,9 @@ function App() {
 	}
 
 	React.useEffect(() => {
-		myApi.getUserInfo()
-			.then((data) => {
-				setCurrentUser(data);
-			})
-			.catch((err) => console.log(`Что-то пошло не так: ${err}`));
-
-		myApi.getInitialCards()
-			.then((cards) => {
+		Promise.all([myApi.getUserInfo(), myApi.getInitialCards()])
+			.then(([userData, cards]) => {
+				setCurrentUser(userData);
 				setCards(cards);
 			})
 			.catch((err) => console.log(`Что-то пошло не так: ${err}`))
