@@ -28,13 +28,6 @@ class Api {
 		});
 	}
 
-	getStartInfo() {
-		return Promise.all([
-			this.getUserInfo(),
-			this.getInitialCards()
-		]);
-	}
-
 	updateUserInfo(data) {
 		return this._sendRequest('users/me', {
 			method: 'PATCH',
@@ -57,16 +50,9 @@ class Api {
 		});
 	}
 
-	likesCard(card) {
+	changeLikeCardStatus(card, isLiked) {
 		return this._sendRequest(`cards/likes/${card}`, {
-			method: 'PUT',
-			headers: this._headers
-		});
-	}
-
-	dislikesCard(card) {
-		return this._sendRequest(`cards/likes/${card}`, {
-			method: 'DELETE',
+			method: isLiked ? 'DELETE' : 'PUT',
 			headers: this._headers
 		});
 	}
@@ -83,7 +69,7 @@ class Api {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({
-				avatar: avatar
+				avatar: avatar.avatar
 			})
 		});
 	}
