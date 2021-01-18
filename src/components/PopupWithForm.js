@@ -1,6 +1,6 @@
-function PopupWithForm({title, name, children, isOpen, onClose, onSubmit}) {
+function PopupWithForm({title, name, children, isOpen, onClose, onSubmit, onClickOverlay}) {
 	return(
-		<section className={`popup popup_place_${name} ${isOpen ? "popup_is-opened" : ""}`}>
+		<section className={`popup popup_place_${name} ${isOpen ? "popup_is-opened" : ""}`} onClick={onClickOverlay}>
 			<div className="popup__container">
 				<button type="button" className={`popup__close-button popup__close-button_place_${name}`} onClick={onClose}/>
 				<form name={`${name}-popup`}

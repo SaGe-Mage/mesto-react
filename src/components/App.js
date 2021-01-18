@@ -21,19 +21,23 @@ function App() {
 
 	function handleEditAvatarClick() {
 		setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+		document.addEventListener('keydown', handleEscClose);
 	}
 
 	function handleEditProfileClick() {
 		setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+		document.addEventListener('keydown', handleEscClose);
 	}
 
 	function handleAddPlaceClick() {
 		setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+		document.addEventListener('keydown', handleEscClose);
 	}
 
 	function handleCardClick(card) {
 		const {link, name} = card;
 		setSelectedCard({isOpen: true, link: link, name: name});
+		document.addEventListener('keydown', handleEscClose);
 	}
 
 	function closeAllPopups() {
@@ -41,6 +45,20 @@ function App() {
 		setIsEditProfilePopupOpen(false);
 		setIsEditAvatarPopupOpen(false);
 		setSelectedCard({isOpen: false, link: "", name: ""});
+
+		document.removeEventListener('keydown', handleEscClose);
+	}
+
+	function handleClickOverlay(event) {
+		if (event.target.classList.contains('popup_is-opened')) {
+			closeAllPopups();
+		}
+	}
+
+	function handleEscClose(event) {
+		if (event.key === 'Escape') {
+			closeAllPopups();
+		}
 	}
 
 	function handleUpdateUser(data) {
@@ -120,13 +138,32 @@ function App() {
 
 				<PopupWithForm title="Вы уверены?" name="delete"/>
 
-				<EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
+				<EditAvatarPopup
+					isOpen={isEditAvatarPopupOpen}
+					onClose={closeAllPopups}
+					onUpdateAvatar={handleUpdateAvatar}
+					onClickOverlay={handleClickOverlay}
+				/>
 
-				<EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
+				<EditProfilePopup
+					isOpen={isEditProfilePopupOpen}
+					onClose={closeAllPopups}
+					onUpdateUser={handleUpdateUser}
+					onClickOverlay={handleClickOverlay}
+				/>
 
-				<AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
+				<AddPlacePopup
+					isOpen={isAddPlacePopupOpen}
+					onClose={closeAllPopups}
+					onAddPlace={handleAddPlaceSubmit}
+					onClickOverlay={handleClickOverlay}
+				/>
 
-				<ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+				<ImagePopup
+					card={selectedCard}
+					onClose={closeAllPopups}
+					onClickOverlay={handleClickOverlay}
+				/>
 
 			</div>
 		</CurrentUserContext.Provider>

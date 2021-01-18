@@ -2,7 +2,7 @@ import React from 'react';
 
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
+function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 	const [name, setName] = React.useState('');
 	const [link, setLink] = React.useState('');
 
@@ -37,6 +37,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
 			onSubmit={handleSubmit}
 			isOpen={isOpen}
 			onClose={onClose}
+			onClickOverlay={onClickOverlay}
 		>
 			<input type="text"
 						 name="name"
