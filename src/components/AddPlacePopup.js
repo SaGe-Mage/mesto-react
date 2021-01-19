@@ -68,7 +68,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 				required
 			/>
 			<span
-				className={`popup__input-error ${ errName ? "popup_input-error_active" : ''}`}
+				className={`popup__input-error ${ !errName ? "popup_input-error_active" : ''}`}
 				id="location-input-error"
 			>
 				{errNameMes}
@@ -85,7 +85,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 				required
 			/>
 			<span
-				className={`popup__input-error ${ errLink ? "popup_input-error_active" : ''}`}
+				className={`popup__input-error ${ !errLink ? "popup_input-error_active" : ''}`}
 				id="link-input-error"
 			>
 				{errLinkMes}

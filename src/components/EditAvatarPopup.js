@@ -52,7 +52,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
 				required
 			/>
 			<span
-				className={`popup__input-error ${ errLink ? "popup_input-error_active" : ''}`}
+				className={`popup__input-error ${ !errLink ? "popup_input-error_active" : ''}`}
 				id="link-input-error"
 			>
 				{errLinkMes}
