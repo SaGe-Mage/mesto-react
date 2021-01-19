@@ -27,6 +27,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
 		<PopupWithForm
 			title="Обновить аватар"
 			name="avatar"
+			button="Сохранить"
 			isOpen={isOpen}
 			onClose={onClose}
 			onSubmit={handleSubmit}

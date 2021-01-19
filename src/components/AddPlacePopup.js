@@ -34,6 +34,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 		<PopupWithForm
 			title="Новое место"
 			name="add"
+			button="Сохранить"
 			onSubmit={handleSubmit}
 			isOpen={isOpen}
 			onClose={onClose}
