@@ -3,6 +3,8 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
+	const [isLoading, setIsLoading] = React.useState(false);
+
 	const [link, setLink] = React.useState('');
 
 	const [errLink, setErrLink] = React.useState(false);
@@ -11,6 +13,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
 	React.useEffect(() => {
 		if (isOpen) {
 			setLink('');
+			setIsLoading(false);
 			setErrLink(false);
 			setErrLinkMes('');
 		}
@@ -24,6 +27,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		setIsLoading(true);
 
 		onUpdateAvatar({
 			avatar: link
@@ -34,7 +38,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, onClickOverlay}) {
 		<PopupWithForm
 			title="Обновить аватар"
 			name="avatar"
-			button="Сохранить"
+			button={isLoading ? "Сохранение..." : "Сохранить"}
 			isOpen={isOpen}
 			isValid={errLink}
 			onClose={onClose}

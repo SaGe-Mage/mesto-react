@@ -1,9 +1,18 @@
 import PopupWithForm from "./PopupWithForm";
+import React from "react";
 
 function DeletePopup({isOpen,onClose, onDeleteCard, onClickOverlay}) {
+	const [isLoading, setIsLoading] = React.useState(false);
+
+	React.useEffect(() => {
+		if (isOpen) {
+			setIsLoading(false);
+		}
+	}, [isOpen]);
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		setIsLoading(true);
 
 		onDeleteCard();
 	}
@@ -11,7 +20,7 @@ function DeletePopup({isOpen,onClose, onDeleteCard, onClickOverlay}) {
 		<PopupWithForm
 			title="Вы уверены?"
 			name="delete"
-			button="Да"
+			button={isLoading ? "Удаление..." : "Да"}
 			isOpen={isOpen}
 			onClose={onClose}
 			isValid={true}

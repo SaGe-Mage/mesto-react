@@ -3,6 +3,8 @@ import React from 'react';
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
+	const [isLoading, setIsLoading] = React.useState(false);
+
 	const [name, setName] = React.useState('');
 	const [link, setLink] = React.useState('');
 
@@ -16,7 +18,8 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 		if (isOpen) {
 			setName('');
 			setLink('');
-			setErrName(false)
+			setIsLoading(false);
+			setErrName(false);
 			setErrLink(false);
 			setErrNameMes('');
 			setErrLinkMes('');
@@ -37,6 +40,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		setIsLoading(true);
 
 		onAddPlace({
 			name,
@@ -48,7 +52,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, onClickOverlay}) {
 		<PopupWithForm
 			title="Новое место"
 			name="add"
-			button="Сохранить"
+			button={isLoading ? "Сохранение..." : "Создать"}
 			onSubmit={handleSubmit}
 			isOpen={isOpen}
 			isValid={errLink && errName}
