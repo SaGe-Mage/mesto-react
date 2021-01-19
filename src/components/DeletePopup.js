@@ -14,6 +14,7 @@ function DeletePopup({isOpen,onClose, onDeleteCard, onClickOverlay}) {
 			button="Да"
 			isOpen={isOpen}
 			onClose={onClose}
+			isValid={true}
 			onSubmit={handleSubmit}
 			onClickOverlay={onClickOverlay}
 		/>
